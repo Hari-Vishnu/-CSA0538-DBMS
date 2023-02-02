@@ -1,0 +1,182 @@
+
+
+mysql>  insert into student values(1,'vishnu','M',"2004-09-01",83794874,'nagercoil');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(2,'hari','m',"2004-09-01",78346754,'nagercoil');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values(3,'priya','f',"2004-07-31",834764976,'nagercoil');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values(4,'dharshini','f',"2004-07-31",83664597,'nagercoil');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++-------+-----------+--------+------------+-----------+-----------+
+| RegNo | Name      | Gender | DOB        | mobileno  | City      |
++-------+-----------+--------+------------+-----------+-----------+
+|     1 | vishnu    | M      | 2004-09-01 |  83794874 | nagercoil |
+|     2 | hari      | m      | 2004-09-01 |  78346754 | nagercoil |
+|     3 | priya     | f      | 2004-07-31 | 834764976 | nagercoil |
+|     4 | dharshini | f      | 2004-07-31 |  83664597 | nagercoil |
++-------+-----------+--------+------------+-----------+-----------+
+4 rows in set (0.00 sec)
+mysql> alter table faculty add age int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| FacNo    | varchar(4)  | NO   | PRI |         |       |
+| FacName  | varchar(15) | YES  |     | NULL    |       |
+| Gender   | char(1)     | YES  |     | NULL    |       |
+| DOB      | date        | YES  |     | NULL    |       |
+| DOJ      | date        | YES  |     | NULL    |       |
+| MobileNo | int(11)     | YES  |     | NULL    |       |
+| DeptNo   | varchar(4)  | YES  |     | NULL    |       |
+| age      | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into faculty values(2001,'vanitha','f',"1980-02-15","2022-02-14",3884863,'cse',43);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into faculty values(2002,'densin','m',"1996-01-13","2020-04-20",83987422,'it',26);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into faculty values(2000,'ram','m',"2000-12-09","2023-01-19",874983734,'eee',23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from faculty;
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 2000-12-09 | 2023-01-19 | 874983734 | eee    |   23 |
+| 2001  | vanitha | f      | 1980-02-15 | 2022-02-14 |   3884863 | cse    |   43 |
+| 2002  | densin  | m      | 1996-01-13 | 2020-04-20 |  83987422 | it     |   26 |
+| 2003  | perumal | m      | 1975-07-26 | 2010-05-16 |  56943856 | ece    |   48 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into department values(01,'COMPUTER','VK');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(02,'ELECTRICAL','EV');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into department values(03,'COMUNICATION','SA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(04,'PHYSICS','VS');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(05,'MATHS','RJ');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from department;
++--------+--------------+----------+
+| DeptNo | DeptName     | DeptHead |
++--------+--------------+----------+
+| 1      | COMPUTER     | VK       |
+| 2      | ELECTRICAL   | EV       |
+| 3      | COMUNICATION | SA       |
+| 4      | PHYSICS      | VS       |
+| 5      | MATHS        | RJ       |
++--------+--------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO COURse VALUES('01','COMPUTER_SCI','M','1','004','2001');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO COURse  VALUES('02','AI','M','3','067','2002');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  INSERT INTO COURse VALUES('03','ENGLISH','M','1','001','2005');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO COURse VALUES('04','ETHICS','E','2','055','2004');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO COURse VALUES('05','DATA_STRUCT','M','6','044','2003');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from course;
++----------+--------------+------------+-------+--------+-------+
+| CourseNo | CourseDesc   | CourseType | SemNo | HallNo | FacNo |
++----------+--------------+------------+-------+--------+-------+
+| 01       | COMPUTER_SCI | M          | 1     | 004    | 2001  |
+| 02       | AI           | M          | 3     | 067    | 2002  |
+| 03       | ENGLISH      | M          | 1     | 001    | 2005  |
+| 04       | ETHICS       | E          | 2     | 055    | 2004  |
+| 05       | DATA_STRUCT  | M          | 6     | 044    | 2003  |
++----------+--------------+------------+-------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+-----------+--------+------------+-----------+-----------+
+| RegNo | Name      | Gender | DOB        | mobileno  | City      |
++-------+-----------+--------+------------+-----------+-----------+
+|     1 | vishnu    | M      | 2004-09-01 |  83794874 | nagercoil |
+|     2 | hari      | m      | 2004-09-01 |  78346754 | nagercoil |
+|     3 | priya     | f      | 2004-07-31 | 834764976 | nagercoil |
+|     4 | dharshini | f      | 2004-07-31 |  83664597 | nagercoil |
++-------+-----------+--------+------------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> update student set regno = 01 where regno = 1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from student;
++-------+-----------+--------+------------+-----------+-----------+
+| RegNo | Name      | Gender | DOB        | mobileno  | City      |
++-------+-----------+--------+------------+-----------+-----------+
+|     1 | vishnu    | M      | 2004-09-01 |  83794874 | nagercoil |
+|     2 | hari      | m      | 2004-09-01 |  78346754 | nagercoil |
+|     3 | priya     | f      | 2004-07-31 | 834764976 | nagercoil |
+|     4 | dharshini | f      | 2004-07-31 |  83664597 | nagercoil |
++-------+-----------+--------+------------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> delete from faculty where facname = 'perumal';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from faculty;
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 2000-12-09 | 2023-01-19 | 874983734 | eee    |   23 |
+| 2001  | vanitha | f      | 1980-02-15 | 2022-02-14 |   3884863 | cse    |   43 |
+| 2002  | densin  | m      | 1996-01-13 | 2020-04-20 |  83987422 | it     |   26 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> update faculty set dob ="1983-05-01" where facname ='ram';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from faculty;
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 1983-05-01 | 2023-01-19 | 874983734 | eee    |   23 |
+| 2001  | vanitha | f      | 1980-02-15 | 2022-02-14 |   3884863 | cse    |   43 |
+| 2002  | densin  | m      | 1996-01-13 | 2020-04-20 |  83987422 | it     |   26 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from faculty where age >65;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from faculty;
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 1983-05-01 | 2023-01-19 | 874983734 | eee    |   23 |
+| 2001  | vanitha | f      | 1980-02-15 | 2022-02-14 |   3884863 | cse    |   43 |
+| 2002  | densin  | m      | 1996-01-13 | 2020-04-20 |  83987422 | it     |   26 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+3 rows in set (0.00 sec)
