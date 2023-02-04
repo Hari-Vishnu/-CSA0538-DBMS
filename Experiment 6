@@ -1,0 +1,150 @@
+mysql> select* from course;
++----------+--------------+------------+-------+--------+-------+
+| CourseNo | CourseDesc   | CourseType | SemNo | HallNo | FacNo |
++----------+--------------+------------+-------+--------+-------+
+| 01       | COMPUTER_SCI | M          | 1     | 004    | 2001  |
+| 02       | AI           | M          | 3     | 067    | 2002  |
+| 03       | ENGLISH      | M          | 1     | 001    | 2005  |
+| 04       | ETHICS       | E          | 2     | 055    | 2004  |
+| 05       | DATA_STRUCT  | M          | 6     | 044    | 2003  |
++----------+--------------+------------+-------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from course where coursetype in ('M');
++----------+--------------+------------+-------+--------+-------+
+| CourseNo | CourseDesc   | CourseType | SemNo | HallNo | FacNo |
++----------+--------------+------------+-------+--------+-------+
+| 01       | COMPUTER_SCI | M          | 1     | 004    | 2001  |
+| 02       | AI           | M          | 3     | 067    | 2002  |
+| 03       | ENGLISH      | M          | 1     | 001    | 2005  |
+| 05       | DATA_STRUCT  | M          | 6     | 044    | 2003  |
++----------+--------------+------------+-------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from course where coursetype in ('e');
++----------+------------+------------+-------+--------+-------+
+| CourseNo | CourseDesc | CourseType | SemNo | HallNo | FacNo |
++----------+------------+------------+-------+--------+-------+
+| 04       | ETHICS     | E          | 2     | 055    | 2004  |
++----------+------------+------------+-------+--------+-------+
+1 row in set (0.00 sec)
+mysql> select * from regi;]
++----------+-------+-------+-------+
+| courseno | regno | marks | semno |
++----------+-------+-------+-------+
+|        1 |     1 |    80 |     1 |
+|        1 |     2 |    25 |     2 |
+|        2 |     3 |    35 |     3 |
+|        3 |     4 |    75 |     5 |
+|        3 |     5 |    67 |     4 |
+|        2 |    13 |    87 |     1 |
+|        1 |    14 |    94 |     2 |
+|        4 |    15 |    85 |     3 |
+|        2 |     5 |    86 |     5 |
+|        4 |    15 |    85 |     3 |
+|        4 |     7 |    79 |     5 |
+|        2 |    13 |    87 |     1 |
+|        1 |    14 |    94 |     2 |
+|        3 |     5 |    67 |     4 |
+|        4 |    15 |    85 |     3 |
+|        4 |    12 |    75 |     5 |
++----------+-------+-------+-------+
+16 rows in set (0.00 sec)
+
+mysql> select courseno,min(marks),max(marks) from regi where courseno=2;
++----------+------------+------------+
+| courseno | min(marks) | max(marks) |
++----------+------------+------------+
+|        2 |         35 |         87 |
++----------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select courseno,avg(marks) from regi where courseno=1;
++----------+------------+
+| courseno | avg(marks) |
++----------+------------+
+|        1 |    73.2500 |
++----------+------------+
+1 row in set (0.00 sec)
+
+
+mysql> select courseno,avg(marks),min(marks),max(marks) from regi where semn
+o=5;
++----------+------------+------------+------------+
+| courseno | avg(marks) | min(marks) | max(marks) |
++----------+------------+------------+------------+
+|        3 |    78.7500 |         75 |         86 |
++----------+------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,avg(marks) from regi where courseno=2;
++----------+------------+
+| courseno | avg(marks) |
++----------+------------+
+|        2 |    73.7500 |
++----------+------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,avg(marks) from regi where courseno=3;
++----------+------------+
+| courseno | avg(marks) |
++----------+------------+
+|        3 |    69.6667 |
++----------+------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,avg(marks) from regi where courseno=4;
++----------+------------+
+| courseno | avg(marks) |
++----------+------------+
+|        4 |    81.8000 |
++----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(marks) from regi;
++------------+
+| sum(marks) |
++------------+
+|       1206 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select courseno,count(courseno) from regi where courseno=1;
++----------+-----------------+
+| courseno | count(courseno) |
++----------+-----------------+
+|        1 |               4 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,count(courseno) from regi where courseno=2;
++----------+-----------------+
+| courseno | count(courseno) |
++----------+-----------------+
+|        2 |               4 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,count(courseno) from regi where courseno=3;
++----------+-----------------+
+| courseno | count(courseno) |
++----------+-----------------+
+|        3 |               3 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql>  select courseno,count(courseno) from regi where courseno=4;
++----------+-----------------+
+| courseno | count(courseno) |
++----------+-----------------+
+|        4 |               5 |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select count(courseno) from regi;
++-----------------+
+| count(courseno) |
++-----------------+
+|              16 |
++-----------------+
+1 row in set (0.00 sec)
