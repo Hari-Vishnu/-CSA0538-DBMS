@@ -1,0 +1,89 @@
+mysql> use vishnudbms;
+Database changed
+mysql> select * from assessment;
++-------+---------+----------+-------+-----------+------------+
+| regno | name    | courseno | marks | faciltyid | assessment |
++-------+---------+----------+-------+-----------+------------+
+|     1 | vikas   |        1 |    90 |      2001 |          1 |
+|     1 | vikas   |        1 |    90 |      2002 |          2 |
+|     1 | vikas   |        2 |    70 |      2002 |          1 |
+|     2 | venu    |        1 |    70 |      2001 |          1 |
+|     2 | venu    |        2 |    79 |      2001 |          1 |
+|     3 | eswar   |        2 |    80 |      2002 |          2 |
+|     4 | harish  |        2 |    65 |      2002 |          1 |
+|     4 | harish  |        1 |    98 |      2001 |          2 |
+|     5 | gowtham |        1 |    92 |      2001 |          1 |
+|     6 | diviya  |        2 |    39 |      2003 |          2 |
++-------+---------+----------+-------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select regno,name,marks from assessment where marks=(select max(high_score)from (select regno,name,max(marks) as high_score from assessment order by high_score)as high_scorer);
++-------+--------+-------+
+| regno | name   | marks |
++-------+--------+-------+
+|     4 | harish |    98 |
++-------+--------+-------+
+1 row in set (0.02 sec)
+
+mysql> select regno,name,max(marks) from assessment group by regno;
++-------+---------+------------+
+| regno | name    | max(marks) |
++-------+---------+------------+
+|     1 | vikas   |         90 |
+|     2 | venu    |         79 |
+|     3 | eswar   |         80 |
+|     4 | harish  |         98 |
+|     5 | gowtham |         92 |
+|     6 | diviya  |         39 |
++-------+---------+------------+
+6 rows in set (0.00 sec)
+mysql> SELECT REGNO, NAME, MAX(MYCOUNT) FROM(SELECT REGNO, NAME, COUNT(ASSESSMENT) AS MYCOUNT FROM ASSESSMENT GROUP BY REGNO ) AS MAX_COUNT;
++-------+-------+--------------+
+| REGNO | NAME  | MAX(MYCOUNT) |
++-------+-------+--------------+
+|     1 | vikas |            3 |
++-------+-------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from faculty;
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 1983-05-01 | 2023-01-19 | 874983734 | eee    |   23 |
+| 2001  | vanitha | f      | 1980-02-15 | 2022-02-14 |   3884863 | cse    |   43 |
+| 2002  | densin  | m      | 1996-01-13 | 2020-04-20 |  83987422 | it     |   26 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+3 rows in set (0.00 sec)
+mysql> select *from faculty where doj = (select max(doj) from faculty);
++-------+---------+--------+------------+------------+-----------+--------+------+
+| FacNo | FacName | Gender | DOB        | DOJ        | MobileNo  | DeptNo | age  |
++-------+---------+--------+------------+------------+-----------+--------+------+
+| 2000  | ram     | m      | 1983-05-01 | 2023-01-19 | 874983734 | eee    |   23 |
++-------+---------+--------+------------+------------+-----------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> select *from assessment;
++-------+---------+----------+-------+-----------+------------+
+| regno | name    | courseno | marks | faciltyid | assessment |
++-------+---------+----------+-------+-----------+------------+
+|     1 | vikas   |        1 |    90 |      2001 |          1 |
+|     1 | vikas   |        1 |    90 |      2002 |          2 |
+|     1 | vikas   |        2 |    70 |      2002 |          1 |
+|     2 | venu    |        1 |    70 |      2001 |          1 |
+|     2 | venu    |        2 |    79 |      2001 |          1 |
+|     3 | eswar   |        2 |    80 |      2002 |          2 |
+|     4 | harish  |        2 |    65 |      2002 |          1 |
+|     4 | harish  |        1 |    98 |      2001 |          2 |
+|     5 | gowtham |        1 |    92 |      2001 |          1 |
+|     6 | diviya  |        2 |    39 |      2003 |          2 |
++-------+---------+----------+-------+-----------+------------+
+10 rows in set (0.00 sec)
+mysql>  select courseno,marks,avg(marks) from assessment where marks > (select avg(marks)from assessment);
++----------+-------+------------+
+| courseno | marks | avg(marks) |
++----------+-------+------------+
+|        1 |    90 |    88.1667 |
++----------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql>
